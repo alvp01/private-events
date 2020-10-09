@@ -5,4 +5,13 @@
   <%= @user.username %>
 </p>
 
+<h2> <%= @user.username %> events </h2>
+<ul id="events">
+  <% @user.created_events.each do |event| %>
+    <li>
+      <%= link_to event.description, event_path(event.id) %>
+    </li>
+  <% end %>
+</ul>
+
 <%= link_to 'Back', root_path %>
