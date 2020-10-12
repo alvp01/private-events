@@ -1,0 +1,13 @@
+<p>
+  <strong>Events:</strong>
+</p>
+
+<ul id="events">
+  <% @events.each do |event| %>
+    <li>
+      <%= link_to event.description, event_path(event.id) %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to 'Create Event', new_event_path %>
