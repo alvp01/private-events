@@ -4,8 +4,7 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new(event_params)
-
+    @event = helpers.current_user.created_events.build(event_params)
     respond_to do |format|
       if @event.save
         format.html { redirect_to user_path(@event.creator_id), notice: 'Event was successfully created.' }
@@ -19,8 +18,9 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
   end
 
-  private:
+  private
+
   def event_params
-    params.require(:event).permit(:description)
+    params.require(:event).permit(:description, :location, :event_date)
   end
 end
