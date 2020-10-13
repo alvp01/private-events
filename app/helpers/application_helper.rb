@@ -4,6 +4,6 @@ module ApplicationHelper
   end
 
   def user_sign_in?
-    !!session[:user_id]
+    true if session[:user_id]
   end
 end
