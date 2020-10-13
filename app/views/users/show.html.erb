@@ -5,9 +5,18 @@
   <%= @user.username %>
 </p>
 
-<h2> <%= @user.username %> events </h2>
+<h2> <%= @user.username %>'s events </h2>
 <ul id="events">
   <% @user.created_events.each do |event| %>
+    <li>
+      <%= link_to event.description, event_path(event.id) %>
+    </li>
+  <% end %>
+</ul>
+
+<h2> Attended Events </h2>
+<ul id="events">
+  <% @user.attended_events.each do |event| %>
     <li>
       <%= link_to event.description, event_path(event.id) %>
     </li>
