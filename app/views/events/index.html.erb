@@ -6,6 +6,7 @@
   <% @upcoming_events.each do |event| %>
     <li>
       <%= link_to event.description, event_path(event.id) %>
+      <%= link_to 'Attend this event', attendance_path(event.id) %>
     </li>
   <% end %>
 </ul>

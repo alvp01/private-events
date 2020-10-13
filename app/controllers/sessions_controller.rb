@@ -1,7 +1,6 @@
 class SessionsController < ApplicationController
-  skip_before_action :require_login, only: [:new]
-  def new
-  end
+  skip_before_action :require_login, only: %i[new create]
+  def new; end
 
   def create
     @user = authenticate(session_params)
@@ -9,7 +8,7 @@ class SessionsController < ApplicationController
     respond_to do |format|
       if @user
         session[:user_name] = @user.username
-        session[:user_id] = @user.id 
+        session[:user_id] = @user.id
         format.html { redirect_to user_path(@user.id), notice: 'successfully logged in' }
       else
         format.html { redirect_to new_session_path, notice: 'User not found!' }
@@ -20,8 +19,8 @@ class SessionsController < ApplicationController
   def destroy
     session[:user_name] = nil
     session[:user_id] = nil
-    respond_to do |format| 
-      format.html { redirect_to new_session_path, notice: 'Successfuly logged out' } 
+    respond_to do |format|
+      format.html { redirect_to new_session_path, notice: 'Successfuly logged out' }
     end
   end
 
@@ -34,5 +33,4 @@ class SessionsController < ApplicationController
   def session_params
     params.require(:session).permit(:username)
   end
-
 end
