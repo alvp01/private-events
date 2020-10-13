@@ -1,9 +1,21 @@
 <p>
-  <strong>Events:</strong>
+  <strong>Upcoming events:</strong>
 </p>
 
 <ul id="events">
-  <% @events.each do |event| %>
+  <% @upcoming_events.each do |event| %>
+    <li>
+      <%= link_to event.description, event_path(event.id) %>
+    </li>
+  <% end %>
+</ul>
+
+<p>
+  <strong>Past events:</strong>
+</p>
+
+<ul id="events">
+  <% @past_events.each do |event| %>
     <li>
       <%= link_to event.description, event_path(event.id) %>
     </li>
