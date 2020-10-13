@@ -17,6 +17,14 @@ class SessionsController < ApplicationController
     end
   end
 
+  def destroy
+    session[:user_name] = nil
+    session[:user_id] = nil
+    respond_to do |format| 
+      format.html { redirect_to new_session_path, notice: 'Successfuly logged out' } 
+    end
+  end
+
   private
 
   def authenticate(username)
