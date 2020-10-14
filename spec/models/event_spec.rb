@@ -14,39 +14,49 @@ RSpec.describe Event, type: :model do
   end
 
   context 'Testing validations' do
-    it 'validates the object to have description attribute' do
+    it 'validates the event to have attributes' do
       u = User.new({:username => 'El_derpo'})
       u.save
       e = Event.new({:description => 'party hard', :location => 'ma house', :event_date => '2020-10-10', :creator_id => 1})
       expect(e.valid?).to be_truthy
     end
 
-    it 'validates the object without description to be invalid' do
+    it 'validates the event without attributes to be invalid' do
+      u = User.new({:username => 'El_derpo'})
+      u.save
       e = Event.new
       expect(e.valid?).to be_falsy
     end
   end
 
-  # context 'Testing associations' do
-  #   it 'has many created events' do
-  #     u = User.new
-  #     expect(u.created_events).to be_a(Object)
-  #   end
+  context 'Testing associations' do
+    it 'validates the event to have a creator' do
+      u = User.new({:username => 'El_derpo'})
+      u.save
+      e = Event.new({:description => 'party hard', :location => 'ma house', :event_date => '2020-10-10', :creator_id => 1})
+      expect(e.valid?).to be_truthy
+    end
 
-  #   it 'has many attendances' do
-  #     u = User.new
-  #     expect(u.attendances).to be_a(Object)
-  #   end
+    it 'validates the event without creator to be invalid' do
+      e = Event.new({:description => 'party hard', :location => 'ma house', :event_date => '2020-10-10', :creator_id => 1})
+      expect(e.valid?).to be_falsy
+    end
 
-  #   it 'has many attended events' do
-  #     u = User.new
-  #     expect(u.attended_events).to be_a(Object)
-  #   end
+    it 'validates the event to have a creator' do
+      u = User.new({:username => 'El_derpo'})
+      u.save
+      e = Event.new({:description => 'party hard', :location => 'ma house', :event_date => '2020-10-10', :creator_id => 1})
+      expect(e.creator.username).to eql(u.username)
+    end
 
-  #   it 'saves objects in db' do
-  #     u = User.new({:username => 'El_herpo'})
-  #     u.save
-  #     expect(User.find_by(username: 'El_herpo')).to eql(u)
-  #   end
-  # end
+    it 'has many attendees' do
+      e = Event.new
+      expect(e.attendees).to be_a(Object)
+    end
+
+    it 'has many attendances' do
+      e = Event.new
+      expect(e.attendances).to be_a(Object)
+    end
+  end
 end
