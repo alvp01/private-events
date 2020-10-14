@@ -8,14 +8,14 @@ RSpec.describe User, type: :model do
     end
 
     it 'assigns the values passed' do
-      u = User.new({:username => 'derpus'})
+      u = User.new({ username: 'derpus' })
       expect(u.username).to eql('derpus')
     end
   end
 
   context 'Testing validations' do
     it 'validates the object to have username attribute' do
-      u = User.new({:username => 'El_derpo'})
+      u = User.new({ username: 'El_derpo' })
       expect(u.valid?).to be_truthy
     end
 
@@ -25,9 +25,9 @@ RSpec.describe User, type: :model do
     end
 
     it 'validates uniqueness' do
-      x = User.new({:username => 'El_derpo'})
+      x = User.new({ username: 'El_derpo' })
       x.save
-      u = User.new({:username => 'El_derpo'})
+      u = User.new({ username: 'El_derpo' })
       expect(u.valid?).to be_falsy
     end
   end
@@ -49,7 +49,7 @@ RSpec.describe User, type: :model do
     end
 
     it 'saves objects in db' do
-      u = User.new({:username => 'El_herpo'})
+      u = User.new({ username: 'El_herpo' })
       u.save
       expect(User.find_by(username: 'El_herpo')).to eql(u)
     end
