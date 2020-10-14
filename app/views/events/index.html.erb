@@ -6,7 +6,9 @@
   <% @upcoming_events.each do |event| %>
     <li>
       <%= link_to event.description, event_path(event.id) %>
-      <%= link_to 'Attend this event', attendance_path(event.id) %>
+      <% unless user_attends?(event) %>
+        <%= link_to 'Attend this event', attendance_path(event.id) %>
+      <% end %>
     </li>
   <% end %>
 </ul>

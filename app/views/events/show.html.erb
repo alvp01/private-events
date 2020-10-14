@@ -15,4 +15,7 @@
     </li>
   <% end %>
 </ul>
-<%= link_to 'Attend this event', attendance_path(@event.id) %>
+<% unless user_attends?(@event) %>
+  <%= link_to 'Attend this event', attendance_path(@event.id) %>
+<% end %>
+

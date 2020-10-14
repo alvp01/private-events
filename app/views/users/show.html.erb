@@ -17,23 +17,17 @@
 
 <h2> Upcoming Events </h2>
 <ul id="events">
-  <% @user.attended_events.each do |event| %>
-    <% if event.event_date >= Date.current %>
+  <% @user.attended_events.upcoming.each do |event| %>
       <li>
         <%= link_to event.description, event_path(event.id) %>
       </li>
-    <% end %>
-
   <% end %>
 </ul>
 <h2> Past Events </h2>
 <ul id="events">
-  <% @user.attended_events.each do |event| %>
-    <% if event.event_date < Date.current %>
+  <% @user.attended_events.past.each do |event| %>
       <li>
         <%= link_to event.description, event_path(event.id) %>
       </li>
-    <% end %>
-
   <% end %>
 </ul>
