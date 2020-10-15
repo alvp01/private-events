@@ -1,0 +1,33 @@
+<% require 'date' %>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Username:</strong>
+  <%= @user.username %>
+</p>
+
+<h2> <%= @user.username %>'s events </h2>
+<ul id="events">
+  <% @user.created_events.each do |event| %>
+    <li>
+      <%= link_to event.description, event_path(event.id) %>
+    </li>
+  <% end %>
+</ul>
+
+<h2> Upcoming Events </h2>
+<ul id="events">
+  <% @upcoming_events.each do |event| %>
+      <li>
+        <%= link_to event.description, event_path(event.id) %>
+      </li>
+  <% end %>
+</ul>
+<h2> Past Events </h2>
+<ul id="events">
+  <% @past_events.each do |event| %>
+      <li>
+        <%= link_to event.description, event_path(event.id) %>
+      </li>
+  <% end %>
+</ul>

@@ -2,16 +2,13 @@
 
 # Private events App
 
-> This is a project built to practice the use of Rails active record's associations.
+> This is a project built to practice the use of Rails active record's associations and sessions.
 
-Members-only club is an exclusive clubhouse where members can write embarrassing posts about non-members.
-Signed-in members can see who the author of a post is. Otherwise, they can only see the post and wonder who wrote it.
 
 ## Built With
 
 - Ruby,
 - Ruby on Rails,
-- Devise gem,
 - Node.js
 - Rubocop
 
@@ -25,7 +22,7 @@ Signed-in members can see who the author of a post is. Otherwise, they can only 
 
 ### Setup
 
-Clone the project from the repository [here](https://github.com/pbkabali/Members-Only)
+Clone the project from the repository [here](https://github.com/alvp01/private-events)
 
 To get a local copy up and running follow these simple example steps.
 
@@ -39,9 +36,9 @@ To get a local copy up and running follow these simple example steps.
 
 ### Usage
 
-- The landing page is supposed to show all the created posts
-- You will need to create an account and be logged in to add a new post
-- When a user is signed in, they will be able to see who authored the post otherwise the author will not be displayed
+- The landing page is the user sign-in page with a link to sign up for a new account
+- You will need to create an account and be logged in to perform any operation other than signing in or signing up.
+- When a user is signed in, they can create events, attend events or view all events
 
 ### Run linters
 
@@ -66,7 +63,7 @@ Run `rubocop .` from the project root directory
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](issues/).
+Feel free to check the [issues page](https://github.com/alvp01/private-events/issues).
 
 ## Show your support
 

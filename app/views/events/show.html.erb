@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Created_by: <%= @event.creator.username %></strong>
+</p>
+
+<p>
+  <strong>Attendees:</strong>
+</p>
+
+<ul id="attendees">
+  <% @event.attendees.all.each do |attendee| %>
+    <li>
+      <%= attendee.username %>
+    </li>
+  <% end %>
+</ul>
+<% unless user_attends?(@event) %>
+  <%= link_to 'Attend this event', attendance_path(@event.id) %>
+<% end %>
+

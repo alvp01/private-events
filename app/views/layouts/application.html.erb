@@ -9,7 +9,23 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="container">
+  <nav class="nav">
+  
+
+  <%if session[:user_name]%>
+    <p>Welcome<strong><%= session[:user_name] %></strong></p>
+    <%= link_to 'Create Event', new_event_path %>
+    <%= link_to 'My Events', user_path(session[:user_id]) %>
+    <%= link_to 'All Events', events_path %>
+    <%= link_to 'Sign out', session_path(session[:user_id]), method: 'delete'%>
+  <%else%>
+    <%= link_to 'Sign in', new_session_path %>
+    <%= link_to 'Sign up', new_user_path %>
+  <%end%>
+  </nav>
+    <div >
+      <%= yield %>
+    </div>
   </body>
 </html>

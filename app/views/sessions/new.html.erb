@@ -1,0 +1,19 @@
+
+<p id="notice"><%= notice %></p>
+
+<h1>Sign in</h1>
+
+<%= form_with(url: sessions_path, local: true) do |form| %>
+  <%= form.fields_for :session do |f| %>
+    <div class="field">
+      <%= f.label :username %>
+      <%= f.text_field :username %>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit "Sign in" %>
+  </div>
+<% end %>
+
+<%= link_to 'Sign up', new_user_path %>
